@@ -1,0 +1,173 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class sample_1 {
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        long time_start = System.currentTimeMillis();
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        for (int i = 0; i < 100000; i++) {
+            int val = rnd.nextInt(-100, 100);
+            list1.add(0,val);
+        }
+        Long time_end = System.currentTimeMillis();
+        System.out.println(time_end-time_start);
+
+        long time_start3 = System.currentTimeMillis();
+        LinkedList<Integer> list3 = new LinkedList<Integer>();
+        for (int i = 0; i < 100000; i++) {
+            int val = rnd.nextInt(-100, 100);
+            list3.add(0,val);
+        }
+        Long time_end3 = System.currentTimeMillis();
+        System.out.println(time_end3-time_start3);
+    }
+}
+
+//==================================================
+
+Реализовать консольное приложение, которое:
+
+1. Принимает от пользователя строку вида
+
+text
+
+1. Нужно сохранить text в связный список.
+2. Если введено print~num, выводит строку из позиции num в связном списке и удаляет её из списка.
+3. Выход из программы - exit
+
+
+qwe
+[qwe]
+tre
+[qwe, tre]
+zxc
+[qwe, tre, zxc]
+print~1
+tre
+[qwe, zxc]
+print~1
+zxc
+[qwe]
+mport java.util.LinkedList;
+import java.util.Scanner;
+
+// Реализовать консольное приложение, которое:
+
+// 1. Принимает от пользователя строку вида
+
+// text
+
+// 1. Нужно сохранить text в связный список.
+// 2. Если введено print~num, выводит строку из позиции num в связном списке и удаляет её из списка.
+// 3. Выход из программы - exit
+
+
+// qwe
+// [qwe]
+// tre
+// [qwe, tre]
+// zxc
+// [qwe, tre, zxc]
+// print~1
+// tre
+// [qwe, zxc]
+// print~1
+// zxc
+// [qwe]
+
+public class sample_2 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter your line ");
+        String stroka = in.nextLine();
+        LinkedList<String> list1 = new LinkedList<String>();
+        while (!stroka.equals("exit")) {
+            if (stroka.startsWith("print~")) {
+                int value = Integer.parseInt(stroka.split("~")[1]);
+                list1.remove(value);
+            }
+            else{
+                list1.add(stroka);
+            }
+            System.out.println(list1);
+            System.out.println("Enter your line ");
+            stroka = in.nextLine();
+        }
+    }
+}
+//-------------------------------------------------------
+
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.Stack;
+
+// Реализовать консольное приложение, которое:
+
+// 1. Принимает от пользователя и “запоминает” строки.
+// 2. Если введено print, выводит строки так, чтобы последняя введенная 
+// была первой в списке, а первая - последней и чистит весь перечень.
+// qwe
+// [qwe]
+// tre
+// [qwe, tre]
+// zxc
+// [qwe, tre, zxc]
+// print
+// zxc, tre, qwe
+// []
+
+public class sample_3 {
+    public static void main(String[] args) {
+        try (Scanner in = new Scanner(System.in)) {
+            System.out.println("Enter your line ");
+            String stroka = in.nextLine();
+            Stack<String> list1 = new Stack<String>();
+            while (!stroka.equals("exit")) {
+                if (stroka.equals("print")) {
+                    while (!list1.empty()) {
+                        System.out.println(list1.pop());
+                    }
+                } else {
+                    list1.push(stroka);
+                }
+                System.out.println(list1);
+                System.out.println("Enter your line ");
+                stroka = in.nextLine();
+            }
+        }
+    }
+}
+
+//----------------------------------------
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+
+// Написать метод, который принимает массив элементов,
+// помещает их в очередь и выводит на консоль содержимое очереди.
+
+public class sample_4 {
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        int[] arc1 = new int[10];
+        for (int i = 0; i < 10; i++) {
+            int val = rnd.nextInt(-100, 100);
+            arc1[i] = val;
+        }
+        inArray(arc1);
+    }
+
+    public static void inArray(int[] array) {
+        Queue<Integer> result = new LinkedList<>();
+        for (int i : array) {
+            result.add(i);
+        }
+        System.out.println(result);;
+    }
+}
+
+//-------------------------------------------------------------------------
